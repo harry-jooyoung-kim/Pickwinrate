@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>픽창 승률 계산기</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' href='style.css'>
+</head>
+<body>
+    <br/>
+    <br/>
+    <h1 class="title centered container-fluid">픽창 승률 계산기</h1>
+    <br>    
+    <h1 class="title centered container-fluid">우리 팀</h1>
+    <div class="input-group mb-3">
+        &nbsp;
+        <input type="text" class="form-control Ourtop" placeholder="탑" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-ourtop">입력</button>
+        </div>
+        &nbsp;
+        <input type="text" class="form-control Ourjun" placeholder="정글" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-ourjun">입력</button>
+        </div>
+        &nbsp;
+        <input type="text" class="form-control Ourmid" placeholder="미드" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-ourmid">입력</button>
+        </div>
+        &nbsp;
+        <input type="text" class="form-control Ouradc" placeholder="원딜" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-ouradc">입력</button>
+        </div>
+        &nbsp;
+        <input type="text" class="form-control Oursup" placeholder="서포터" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-oursup">입력</button>
+        </div>
+        &nbsp;
+      </div>
+      <br/> 
+      <h1 class="subtitle centered">VS.</h1>
+      <br/> 
+      <h1 class="title centered container-fluid">상대 팀</h1>
+      <div class="input-group mb-3">
+        &nbsp;
+        <input type="text" class="form-control Enmtop" placeholder="탑" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmtop">입력</button>
+        </div>
+        &nbsp;
+        <input type="text" class="form-control Enmjun" placeholder="정글" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmjun">입력</button>
+        </div>
+        &nbsp;
+        <input type="text" class="form-control Enmmid" placeholder="미드" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmmid">입력</button>
+        </div>
+        &nbsp;
+        <input type="text" class="form-control Enmadc" placeholder="원딜" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmadc">입력</button>
+        </div>
+        &nbsp;
+        <input type="text" class="form-control Enmsup" placeholder="서포터" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmsup">입력</button>
+        </div>
+        &nbsp;
+      </div>
+        
+        <button class="btn btn-outline-secondary btn3 centered" type="button" id="predictbutton" onclick="Prediction()">승부 예측하기</button>
+        <br/>
+        <h1 class="title centered" id="result"></h1>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>  
+    <script src="func.js"></script>
+</body>
+</html>
