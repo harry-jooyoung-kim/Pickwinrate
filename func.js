@@ -502,14 +502,17 @@ function Prediction() {
     var result = document.getElementById("result");
     var output=0;
     var output_reverse=0;
+    var margin=0.01;
     for (i = 0; i < 10; i++) {
         output+=xvec[i]*model[i];
         output_reverse+=xvec2[i]*model[i];
     }
 
-    if (output>=output_reverse){
+    if ((output-output_reverse)>margin){
     result.innerText = "승리할 확률이 높습니다!\n 아군 스코어: "+output*100+"\n 적군 스코어: "+output_reverse*100;
-    } else{
+    } else if((output_reverse-output)>margin){
     result.innerText = "패배할 확률이 높습니다!\n 아군 스코어: "+output*100+"\n 적군 스코어: "+output_reverse*100;
+    } else {
+    result.innerText = "대등한 경기가 예상됩니다!\n 아군 스코어: "+output*100+"\n 적군 스코어: "+output_reverse*100;
     }
 };
