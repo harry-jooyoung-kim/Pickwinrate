@@ -398,6 +398,7 @@ $(function() {
 });
 
 var xvec=[0,0,0,0,0,0,0,0,0,0,1];
+var xvec2=[0,0,0,0,0,0,0,0,0,0,1];
 var model=[0.0000131152072989905,0.0000184617986334543,0.0000315094513572409,-0.00000810223811968594,-0.00000950011454953728,
     0.00000418955376630335,0.0000185782045853181,0.00241676632614881,0.0000178035560594246,0.0000160434884536824,0.33334997592113];
 $(document).ready(function () 
@@ -407,6 +408,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Ourtop').val() === champlist[i].name){
                 xvec[0]=champlist[i].code;
+                xvec2[5]=champlist[i].code;
                 var x = document.getElementById("Ourtop");
                 x.style.color = "#1a78ae";
             }
@@ -415,6 +417,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Ourjun').val() === champlist[i].name){
                 xvec[1]=champlist[i].code;
+                xvec2[6]=champlist[i].code;
                 var x = document.getElementById("Ourjun");
                 x.style.color = "#1a78ae"; 
             }
@@ -423,6 +426,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Ourmid').val() === champlist[i].name){
                 xvec[2]=champlist[i].code;
+                xvec2[7]=champlist[i].code;
                 var x = document.getElementById("Ourmid");
                 x.style.color = "#1a78ae";  
             }
@@ -431,6 +435,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Ouradc').val() === champlist[i].name){
                 xvec[3]=champlist[i].code;
+                xvec2[8]=champlist[i].code;
                 var x = document.getElementById("Ouradc");
                 x.style.color = "#1a78ae";  
             }
@@ -439,6 +444,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Oursup').val() === champlist[i].name){
                 xvec[4]=champlist[i].code;
+                xvec2[9]=champlist[i].code;
                 var x = document.getElementById("Oursup");
                 x.style.color = "#1a78ae";
             }
@@ -447,6 +453,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmtop').val() === champlist[i].name){
                 xvec[5]=champlist[i].code;
+                xvec2[0]=champlist[i].code;
                 var x = document.getElementById("Enmtop");
                 x.style.color = "#c6443e";  
             }
@@ -455,6 +462,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmjun').val() === champlist[i].name){
                 xvec[6]=champlist[i].code;
+                xvec2[1]=champlist[i].code;
                 var x = document.getElementById("Enmjun");
                 x.style.color = "#c6443e";  
             }
@@ -463,6 +471,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmmid').val() === champlist[i].name){
                 xvec[7]=champlist[i].code;
+                xvec2[2]=champlist[i].code;
                 var x = document.getElementById("Enmmid");
                 x.style.color = "#c6443e";  
             }
@@ -471,6 +480,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmadc').val() === champlist[i].name){
                 xvec[8]=champlist[i].code;
+                xvec2[3]=champlist[i].code;
                 var x = document.getElementById("Enmadc");
                 x.style.color = "#c6443e";  
             }
@@ -479,6 +489,7 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmsup').val() === champlist[i].name){
                 xvec[9]=champlist[i].code;
+                xvec2[4]=champlist[i].code;
                 var x = document.getElementById("Enmsup");
                 x.style.color = "#c6443e";  
             }
@@ -490,14 +501,15 @@ $(document).ready(function ()
 function Prediction() {
     var result = document.getElementById("result");
     var output=0;
-    
+    var output_reverse=0;
     for (i = 0; i < 10; i++) {
         output+=xvec[i]*model[i];
+        output_reverse+=xvec2[i]*model[i];
     }
 
-    if (output>=0.4){
-    result.innerText = "승리할 확률이 높습니다!\n";
+    if (output>=output_reverse){
+    result.innerText = "승리할 확률이 높습니다!\n 아군 스코어: "+output*100+"\n 적군 스코어: "+output_reverse*100;
     } else{
-    result.innerText = "패배할 확률이 높습니다!\n";
+    result.innerText = "패배할 확률이 높습니다!\n 아군 스코어: "+output*100+"\n 적군 스코어: "+output_reverse*100;
     }
 };
