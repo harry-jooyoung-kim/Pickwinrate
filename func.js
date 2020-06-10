@@ -495,7 +495,7 @@ function Prediction() {
         output+=xvec[i]*model[i];
     }
 
-    if (output>0.5){
+    if (output>=0.4){
     result.innerText = "승리할 확률이 높습니다!\n";
     } else{
     result.innerText = "패배할 확률이 높습니다!\n";
