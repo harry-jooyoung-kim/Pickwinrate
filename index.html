@@ -2,87 +2,58 @@
 <html>
 <head>
     <meta charset='utf-8'>
-    <title>픽창 승률 계산기</title>
+    <title>픽창 승부 예측 AI</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165906089-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-165906089-1');
+    </script>
+   <meta property="og:title" content="픽창 승부 예측 AI">
+   <meta property="og:description" content="리그 오브 레전드 10.12 패치 랭크 게임 픽창 승부 예측 AI powered by P.S">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel='stylesheet' href='style.css'>
 </head>
 <body>
-    <br/>
-    <br/>
-    <h1 class="title centered container-fluid">픽창 승률 계산기</h1>
-    <br>    
-    <h1 class="title centered container-fluid">우리 팀</h1>
-    <div class="input-group mb-3">        
-        <input type="text" class="form-control Ourtop" placeholder="탑" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-ourtop">입력</button>
-        </div>
-      </div>
-      <div class="input-group mb-3">        
-        <input type="text" class="form-control Ourjun" placeholder="정글" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-ourjun">입력</button>
-        </div>
-      </div>
-      <div class="input-group mb-3">        
-        <input type="text" class="form-control Ourmid" placeholder="미드" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-ourmid">입력</button>
-        </div>
-      </div>
-      <div class="input-group mb-3">     
-        <input type="text" class="form-control Ouradc" placeholder="원딜" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-ouradc">입력</button>
-        </div>
-      </div>
-      <div class="input-group mb-3">     
-        <input type="text" class="form-control Oursup" placeholder="서포터" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-oursup">입력</button>
-        </div>
-      </div>
+      <br/>
+    <h1 class="title centered container-fluid">리그 오브 레전드 10.12 패치</h1>
+    <h1 class="title centered container-fluid">랭크 게임 픽창 승부 예측 AI</h1>
+    <h1 class="subtitle centered container-fluid">powered by <a href="https://www.youtube.com/channel/UCqI5lyTpC79pOy2D-VXAMdA"><img src="logo.jpg" border="0" width="40"></a></h1>
+      <br/>
+
+    <h1 class="team1 centered container-fluid">아군 챔피언</h1>
+    <div class="controller">
+      <input type="text" class="form-control inputbox" placeholder="탑" id="Ourtop">
+      <input type="text" class="form-control inputbox" placeholder="정글" id="Ourjun">
+      <input type="text" class="form-control inputbox" placeholder="미드" id="Ourmid">
+      <input type="text" class="form-control inputbox" placeholder="원딜" id="Ouradc">
+      <input type="text" class="form-control inputbox" placeholder="서포터" id="Oursup">
+    </div>
       <h1 class="subtitle centered">VS.</h1>
-      <h1 class="title centered container-fluid">상대 팀</h1>
-      <div class="input-group mb-3">
-        <input type="text" class="form-control Enmtop" placeholder="탑" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmtop">입력</button>
-        </div>
-      </div>
-      <div class="input-group mb-3">     
-        <input type="text" class="form-control Enmjun" placeholder="정글" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmjun">입력</button>
-        </div>
-      </div>
-      <div class="input-group mb-3">     
-        <input type="text" class="form-control Enmmid" placeholder="미드" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmmid">입력</button>
-        </div>
-      </div>
-      <div class="input-group mb-3">     
-        <input type="text" class="form-control Enmadc" placeholder="원딜" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmadc">입력</button>
-        </div>
-      </div>
-      <div class="input-group mb-3">     
-        <input type="text" class="form-control Enmsup" placeholder="서포터" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary btn2" type="button" id="button-enmsup">입력</button>
-        </div>
+      <h1 class="team2 centered container-fluid">적군 챔피언</h1>
+      <div class="controller">
+        <input type="text" class="form-control inputbox" placeholder="탑" id="Enmtop">
+        <input type="text" class="form-control inputbox" placeholder="정글" id="Enmjun">
+        <input type="text" class="form-control inputbox" placeholder="미드" id="Enmmid">
+        <input type="text" class="form-control inputbox" placeholder="원딜" id="Enmadc">
+        <input type="text" class="form-control inputbox" placeholder="서포터" id="Enmsup">
       </div>
         
-        <button class="btn btn-outline-secondary btn3 centered" type="button" id="predictbutton" onclick="Prediction()">승부 예측하기</button>
-        <br/>
-        <h1 class="subtitle centered" id="result"></h1>
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>  
+      <button class="btn btn-outline-secondary btn3 centered" type="button" id="predictbutton" onclick="Prediction()">승부 예측하기</button>
+      <br/>
+      <h1 class="subtitle centered" id="result"></h1>
+    
+    <br>   
+    <h1 class="copyright centered container-fluid">Copyrightⓒ 2020 All rights reserved by <a href="https://www.youtube.com/channel/UCqI5lyTpC79pOy2D-VXAMdA">프로관전러 P.S</a> </h1>
+    <br>
+
     <script src="func.js"></script>
 </body>
 </html>
