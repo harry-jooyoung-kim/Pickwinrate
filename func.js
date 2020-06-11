@@ -397,12 +397,8 @@ $(function() {
     });
 });
 
-var xvec=[0,0,0,0,0,0,0,0,0,0,1];
-var xvec2=[0,0,0,0,0,0,0,0,0,0,1];
-//var model=[0.0000131152072989905,0.0000184617986334543,0.0000315094513572409,-0.00000810223811968594,-0.00000950011454953728,
-//    0.00000418955376630335,0.0000185782045853181,0.00241676632614881,0.0000178035560594246,0.0000160434884536824,0.33334997592113];
-var model1012=[0.000004376812923537315923,0.00001756618168482276598,0.00003525387755985398384,-0.000004956920765829446606, -0.00001460848456174279134,
-    0.000008089342614459567459,0.00002061454447468119143,0.002386443592942029488,0.00002199496429903772483,0.00001475899106572272890,0.3314912748656163588];
+var xvec=[0,0,0,0,0,0,0,0,0,0];
+
 $(document).ready(function () 
 {
     setInterval(function()
@@ -410,7 +406,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Ourtop').val() === champlist[i].name){
                 xvec[0]=champlist[i].code;
-                xvec2[5]=champlist[i].code;
                 var x = document.getElementById("Ourtop");
                 x.style.color = "#1a78ae";
             }
@@ -419,7 +414,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Ourjun').val() === champlist[i].name){
                 xvec[1]=champlist[i].code;
-                xvec2[6]=champlist[i].code;
                 var x = document.getElementById("Ourjun");
                 x.style.color = "#1a78ae"; 
             }
@@ -428,7 +422,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Ourmid').val() === champlist[i].name){
                 xvec[2]=champlist[i].code;
-                xvec2[7]=champlist[i].code;
                 var x = document.getElementById("Ourmid");
                 x.style.color = "#1a78ae";  
             }
@@ -437,7 +430,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Ouradc').val() === champlist[i].name){
                 xvec[3]=champlist[i].code;
-                xvec2[8]=champlist[i].code;
                 var x = document.getElementById("Ouradc");
                 x.style.color = "#1a78ae";  
             }
@@ -446,7 +438,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Oursup').val() === champlist[i].name){
                 xvec[4]=champlist[i].code;
-                xvec2[9]=champlist[i].code;
                 var x = document.getElementById("Oursup");
                 x.style.color = "#1a78ae";
             }
@@ -455,7 +446,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmtop').val() === champlist[i].name){
                 xvec[5]=champlist[i].code;
-                xvec2[0]=champlist[i].code;
                 var x = document.getElementById("Enmtop");
                 x.style.color = "#c6443e";  
             }
@@ -464,7 +454,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmjun').val() === champlist[i].name){
                 xvec[6]=champlist[i].code;
-                xvec2[1]=champlist[i].code;
                 var x = document.getElementById("Enmjun");
                 x.style.color = "#c6443e";  
             }
@@ -473,7 +462,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmmid').val() === champlist[i].name){
                 xvec[7]=champlist[i].code;
-                xvec2[2]=champlist[i].code;
                 var x = document.getElementById("Enmmid");
                 x.style.color = "#c6443e";  
             }
@@ -482,7 +470,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmadc').val() === champlist[i].name){
                 xvec[8]=champlist[i].code;
-                xvec2[3]=champlist[i].code;
                 var x = document.getElementById("Enmadc");
                 x.style.color = "#c6443e";  
             }
@@ -491,7 +478,6 @@ $(document).ready(function ()
         for (i = 0; i < champlist.length; i++) {
             if ($('#Enmsup').val() === champlist[i].name){
                 xvec[9]=champlist[i].code;
-                xvec2[4]=champlist[i].code;
                 var x = document.getElementById("Enmsup");
                 x.style.color = "#c6443e";  
             }
@@ -499,46 +485,42 @@ $(document).ready(function ()
     },500);
 });
 
+var loading = $('<div class="spinner-border spinner text-dark" style="width: 5rem; height: 5rem;" role="status"><span class="sr-only">Loading...</span></div>').appendTo(document.body).hide();
 
-function Prediction() {
+function Prediction(){
+    loading.show();
+    var oReq3= new XMLHttpRequest();
     var result = document.getElementById("result");
-    var output=0;
-    var output_reverse=0;
+    oReq3.addEventListener("load",function(){
 
-    for (i = 0; i < 10; i++) {
-        output+=xvec[i]*model1012[i];
-        output_reverse+=xvec2[i]*model1012[i];
-    }
+                predict=this.responseText*1;
 
-    if ((output<0.4)&(output_reverse<0.4)){
-        result.innerText = "대등한 경기가 예상됩니다!\n";
-        if(output>output_reverse){
-            result.innerText += "조합 상 약간 우세합니다.\n";
-        //    result.innerText += "아군 스코어: "+Math.round(output*100)+", 적군 스코어: "+Math.round(output_reverse*100);
-        }
-        else{
-            result.innerText += "조합 상 약간 불리합니다.\n";
-            //    result.innerText += "아군 스코어: "+Math.round(output*100)+", 적군 스코어: "+Math.round(output_reverse*100);
-        }       
-    }else if ((output>=0.4)&(output_reverse>=0.4)){
-        result.innerText = "대등한 경기가 예상됩니다!\n";
-        if(output>output_reverse){
-            result.innerText += "조합 상 약간 우세합니다.\n";
-            //    result.innerText += "아군 스코어: "+Math.round(output*100)+", 적군 스코어: "+Math.round(output_reverse*100);
-        }
-        else{
-            result.innerText += "조합 상 약간 불리합니다.\n";
-            //    result.innerText += "아군 스코어: "+Math.round(output*100)+", 적군 스코어: "+Math.round(output_reverse*100);
-        }   
-    } else{
-        if(output>0.4){
-            result.innerText = "승리할 확률이 높습니다!\n";
-            //    result.innerText += "아군 스코어: "+Math.round(output*100)+", 적군 스코어: "+Math.round(output_reverse*100);
-        }
-        else{
-            result.innerText = "패배할 확률이 높습니다!\n";
-            //    result.innerText += "아군 스코어: "+Math.round(output*100)+", 적군 스코어: "+Math.round(output_reverse*100);
-        }
-    }
-    
+                if (predict == 1){
+                    result.innerText = "대등한 경기가 예상됩니다!\n";
+                    result.innerText += "조합 상 약간 우세합니다.\n"; 
+                    loading.hide();
+                }
+                else if (predict == 2){
+                    result.innerText = "대등한 경기가 예상됩니다!\n";
+                    result.innerText += "조합 상 약간 불리합니다.\n"; 
+                    loading.hide();
+                }
+                else if (predict == 3){
+                    result.innerText = "승리할 확률이 높습니다!\n";
+                    loading.hide();
+                }
+                else if (predict == 4){
+                    result.innerText = "패배할 확률이 높습니다!\n";
+                    loading.hide();
+                }
+                else{
+                    result.innerText = "다시 시도해 주세요";
+                    loading.hide();
+                }
+                
+    });
+    oReq3.open("POST", "https://us-central1-inpyundaily.cloudfunctions.net/pickwinrate");
+    oReq3.setRequestHeader('Content-Type', 'application/json');
+    oReq3.setRequestHeader('Accept', 'application/json');
+    oReq3.send(JSON.stringify([xvec[0],xvec[1],xvec[2],xvec[3],xvec[4],xvec[5],xvec[6],xvec[7],xvec[8],xvec[9]]));
 };

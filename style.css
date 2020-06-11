@@ -52,6 +52,15 @@ background-color: white;
     padding-block-start: 5px;
     padding-block-end: 5px;   
 }
+  
+.spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: calc(45%);
+    left: calc(45%);
+    
+    }
 
 .inputbox{
     margin-bottom: 15px;
