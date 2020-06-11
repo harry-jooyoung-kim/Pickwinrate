@@ -148,6 +148,7 @@ var champlist=[{'name':'아트록스','code':'266'},
 {'name':'모데카이저','code':'82'},
 {'name':'모데','code':'82'},
 {'name':'모르가나','code':'25'},
+{'name':'몰가','code':'25'},
 {'name':'나미','code':'267'},
 {'name':'나서스','code':'75'},
 {'name':'노틸러스','code':'111'},
@@ -171,6 +172,7 @@ var champlist=[{'name':'아트록스','code':'266'},
 {'name':'람머스','code':'33'},
 {'name':'렉사이','code':'421'},
 {'name':'레넥톤','code':'58'},
+{'name':'레넥','code':'58'},
 {'name':'렝가','code':'107'},
 {'name':'리븐','code':'92'},
 {'name':'럼블','code':'68'},
@@ -497,12 +499,12 @@ function Prediction(){
 
                 if (predict == 1){
                     result.innerText = "대등한 경기가 예상됩니다!\n";
-                    result.innerText += "조합 상 약간 우세합니다.\n"; 
+                    result.innerText += "좋은 조합입니다.\n"; 
                     loading.hide();
                 }
                 else if (predict == 2){
                     result.innerText = "대등한 경기가 예상됩니다!\n";
-                    result.innerText += "조합 상 약간 불리합니다.\n"; 
+                    result.innerText += "밀리는 조합입니다.\n"; 
                     loading.hide();
                 }
                 else if (predict == 3){
